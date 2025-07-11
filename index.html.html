@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deanna's 7-Day Gluten-Free Meal Plan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #374151; /* Dark gray text */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .day-button {
+            @apply px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200;
+            @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+        }
+        .day-button.active {
+            @apply bg-blue-600 text-white hover:bg-blue-700;
+        }
+        .meal-card {
+            @apply bg-blue-50 p-4 rounded-lg shadow-sm mb-4;
+        }
+        .summary-card {
+            @apply bg-green-50 p-4 rounded-lg shadow-sm mt-6;
+        }
+        h2 {
+            @apply text-2xl font-semibold text-gray-800 mb-4;
+        }
+        h3 {
+            @apply text-xl font-medium text-gray-700 mb-2;
+        }
+        h4 {
+            @apply text-lg font-medium text-gray-600 mb-1;
+        }
+        .macro-label {
+            @apply font-semibold text-gray-600;
+        }
+        .section-title {
+            @apply text-2xl font-semibold text-gray-800 mt-8 mb-4;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <div class="flex justify-center mb-4">
+            <img src="Solas Logo.png" alt="Solas Nutrition Logo" class="h-40 w-auto" />
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-yellow-800 mb-2">Deanna's 7-Day Gluten-Free Meal Plan</h1>
+        <p class="text-center text-yellow-700 text-lg font-semibold mb-4">Welcome, Deanna! Here’s your personalized meal plan, designed just for you.</p>
+        <p class="text-center text-gray-600 mb-8">
+            This meal plan is a general guide (1,500 calories/day with 30% protein, 45% carbs, 25% fats).
+            It focuses on clean eating, easy-to-cook meals, and foods to help lower LDL cholesterol, with no red meat and minimal low-fat dairy.
+            <br>
+            
+
+        <!-- Day Navigation -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8" id="day-navigation">
+            <!-- Buttons will be generated here by JavaScript -->
+        </div>
+
+        <!-- Meal Plan Content -->
+        <div id="meal-plan-content">
+            <!-- Daily meal plan will be rendered here -->
+        </div>
+
+        <!-- Food Substitutions Section -->
+        <div class="section-title">Food Substitutions</div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+            <p class="text-gray-700 mb-4">Here are some substitutions for foods that may be disliked or not tolerated, keeping in mind the gluten-free, no red meat, low-fat dairy, and LDL-cholesterol-lowering requirements.</p>
+
+            <h4 class="font-bold text-gray-700 mb-2">Protein Sources:</h4>
+            <ul class="list-disc list-inside text-gray-600 mb-4 ml-4">
+                <li>**Chicken Breast/Turkey Breast/Lean Ground Turkey:** Other Fish (Salmon, cod, tilapia, haddock, trout, sardines, tuna), Legumes (Chickpeas, black beans, cannellini beans, edamame), Eggs, Protein Powder (Whey, casein, or plant-based), Tofu/Tempeh.</li>
+                <li>**Shrimp:** Other fish, chicken, or plant-based proteins like chickpeas or beans.</li>
+            </ul>
+
+            <h4 class="font-bold text-gray-700 mb-2">Carbohydrate Sources (Gluten-Free & Fiber-Rich):</h4>
+            <ul class="list-disc list-inside text-gray-600 mb-4 ml-4">
+                <li>**Oats (Gluten-Free):** Quinoa (cooked), brown rice, sweet potato, gluten-free buckwheat groats, millet.</li>
+                <li>**Brown Rice/Quinoa/Sweet Potato:** Other gluten-free grains (millet, sorghum), white potato (in moderation, focus on preparation without added fats), corn, gluten-free pasta (lentil or chickpea based for extra protein).</li>
+                <li>**Gluten-Free Bread/Crackers/Wraps:** Rice cakes, corn thins, lettuce wraps, or simply omit and increase other complex carbs.</li>
+                <li>**Berries/Fruits:** Any other fruit (apples, pears, oranges, bananas, peaches, plums). Focus on a variety.</li>
+            </ul>
+
+            <h4 class="font-bold text-gray-700 mb-2">Healthy Fat Sources:</h4>
+            <ul class="list-disc list-inside text-gray-600 mb-4 ml-4">
+                <li>**Avocado:** Olives, olive oil, flax seeds, hemp seeds, pumpkin seeds, sunflower seeds.</li>
+                <li>**Nuts (Almonds, Walnuts):** Pecans, cashews, pistachios, sunflower seeds, pumpkin seeds. Be mindful of portion sizes due to calorie density.</li>
+                <li>**Chia Seeds/Flax Seeds:** Hemp seeds.</li>
+            </ul>
+
+            <h4 class="font-bold text-gray-700 mb-2">Vegetables:</h4>
+            <ul class="list-disc list-inside text-gray-600 mb-4 ml-4">
+                <li>**Any Vegetable:** Feel free to substitute disliked vegetables with others you enjoy. The goal is to consume a wide variety of colorful vegetables for maximum nutrient intake. Focus on leafy greens, cruciferous vegetables, and a rainbow of colors.</li>
+            </ul>
+
+            <h4 class="font-bold text-gray-700 mb-2">Dairy/Dairy-Free Alternatives:</h4>
+            <ul class="list-disc list-inside text-gray-600 mb-4 ml-4">
+                <li>**Unsweetened Almond Milk:** Unsweetened oat milk (ensure gluten-free certified), unsweetened soy milk, unsweetened cashew milk.</li>
+                <li>**Plain Low-Fat Greek Yogurt:** Plain low-fat cottage cheese (check sodium content), or if dairy is an issue, plain unsweetened dairy-free yogurt (like almond or coconut).</li>
+            </ul>
+
+            <h4 class="font-bold text-gray-700 mb-2">Seasonings/Dressings:</h4>
+            <ul class="list-disc list-inside text-gray-600 ml-4">
+                <li>**Olive Oil & Lemon Juice Dressing/Balsamic Vinaigrette:** Apple cider vinegar, herbs and spices (garlic powder, onion powder, paprika, turmeric, black pepper, chili flakes), homemade dressings using healthy oils.</li>
+                <li>**Low-Sodium Tamari/Coconut Aminos:** Other gluten-free, low-sodium sauces you enjoy.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const mealPlanData = [
+            // Day 1
+            {
+                day: "Day 1",
+                meals: [
+                    { type: "Breakfast", name: "Gluten-free Rolled Oats with Berries & Protein Powder", details: "1/2 cup gluten-free rolled oats cooked with unsweetened almond milk, 1/2 cup mixed berries, 1 scoop (20g) plant-based protein powder.", macros: { protein: "27g", carbs: "45g", fat: "6g", calories: "300" } },
+                    { type: "Snack 1", name: "Apple", details: "1 medium apple.", macros: { protein: "0g", carbs: "25g", fat: "0g", calories: "100" } },
+                    { type: "Lunch", name: "Grilled Chicken Salad", details: "Large salad with 3 oz grilled chicken breast, 2 cups mixed greens, 1/2 cup cucumber, 1/4 cup shredded carrots, 1/4 cup chickpeas, 1 tbsp olive oil & lemon juice dressing.", macros: { protein: "35g", carbs: "30g", fat: "20g", calories: "400" } },
+                    { type: "Snack 2", name: "Almond Butter & Banana", details: "1 tbsp almond butter with 1/2 banana.", macros: { protein: "4g", carbs: "20g", fat: "9g", calories: "150" } },
+                    { type: "Dinner", name: "Baked Cod with Sweet Potato & Green Beans", details: "4 oz baked cod, 1 cup roasted sweet potato, 1 cup steamed green beans with 1 tsp olive oil.", macros: { protein: "32g", carbs: "55g", fat: "18g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "98g", carbs: "175g", fat: "53g" }
+            },
+            // Day 2
+            {
+                day: "Day 2",
+                meals: [
+                    { type: "Breakfast", name: "Spinach & Banana Protein Smoothie", details: "1 scoop (20g) plant-based protein powder, 1 cup spinach, 1/2 banana, 1/2 cup unsweetened almond milk.", macros: { protein: "25g", carbs: "40g", fat: "5g", calories: "300" } },
+                    { type: "Snack 1", name: "Walnuts", details: "1/4 cup unsalted walnuts.", macros: { protein: "5g", carbs: "4g", fat: "9g", calories: "100" } },
+                    { type: "Lunch", name: "Turkey & Avocado Sandwich", details: "3 oz sliced turkey breast (low sodium), 1/4 avocado, lettuce, tomato on 1 slice gluten-free bread.", macros: { protein: "28g", carbs: "30g", fat: "18g", calories: "400" } },
+                    { type: "Snack 2", name: "Greek Yogurt with Honey & Chia Seeds", details: "1/2 cup plain low-fat Greek yogurt with 1 tsp honey or maple syrup and 1 tbsp chia seeds.", macros: { protein: "12g", carbs: "15g", fat: "4g", calories: "150" } },
+                    { type: "Dinner", name: "Baked Salmon with Asparagus & Brown Rice", details: "4 oz baked salmon, 1 cup asparagus, 1/2 cup brown rice.", macros: { protein: "30g", carbs: "40g", fat: "25g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "100g", carbs: "129g", fat: "61g" }
+            },
+            // Day 3
+            {
+                day: "Day 3",
+                meals: [
+                    { type: "Breakfast", name: "Egg White Omelette", details: "3 egg whites with 1/4 cup low-fat shredded cheese, 1/4 cup diced green pepper, and 1/4 cup sliced mushrooms.", macros: { protein: "25g", carbs: "10g", fat: "8g", calories: "300" } },
+                    { type: "Snack 1", name: "Orange", details: "1 medium orange.", macros: { protein: "1g", carbs: "15g", fat: "0g", calories: "100" } },
+                    { type: "Lunch", name: "Chicken Salad Lettuce Cups", details: "3 oz shredded cooked chicken breast mixed with 1 tbsp light mayo, chopped celery, and grapes. Served in 2 large lettuce cups.", macros: { protein: "28g", carbs: "20g", fat: "20g", calories: "400" } },
+                    { type: "Snack 2", name: "Steamed Edamame", details: "1/2 cup edamame (steamed) with a pinch of sea salt.", macros: { protein: "8g", carbs: "10g", fat: "5g", calories: "150" } },
+                    { type: "Dinner", name: "Lean Ground Turkey Burger with Sweet Potato Fries", details: "4 oz lean ground turkey burger patty (seasoned, no bun), 1.5 cups homemade sweet potato fries (baked with 1 tsp olive oil), 1 cup steamed mixed vegetables.", macros: { protein: "35g", carbs: "55g", fat: "18g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "97g", carbs: "150g", fat: "51g" }
+            },
+            // Day 4
+            {
+                day: "Day 4",
+                meals: [
+                    { type: "Breakfast", name: "Gluten-free Rolled Oats with Peaches & Pumpkin Seeds", details: "1/2 cup gluten-free rolled oats cooked with unsweetened almond milk, 1/4 cup sliced peaches, 1 tbsp pumpkin seeds.", macros: { protein: "10g", carbs: "55g", fat: "10g", calories: "300" } },
+                    { type: "Snack 1", name: "Hard-boiled Egg", details: "1 hard-boiled egg.", macros: { protein: "6g", carbs: "0g", fat: "5g", calories: "100" } },
+                    { type: "Lunch", name: "Quinoa Salad with Chickpeas & Veggies", details: "1 cup cooked quinoa, 1/2 cup chickpeas, 1/2 cup diced cucumber, bell peppers, and cherry tomatoes, 1 tbsp olive oil & lemon dressing.", macros: { protein: "18g", carbs: "60g", fat: "10g", calories: "400" } },
+                    { type: "Snack 2", name: "Cantaloupe & Almonds", details: "1 cup cantaloupe with 10 almonds.", macros: { protein: "3g", carbs: "25g", fat: "8g", calories: "150" } },
+                    { type: "Dinner", name: "Baked Tilapia with Sweet Potato & Green Beans", details: "4 oz baked tilapia, 1 cup roasted sweet potato, 1 cup steamed green beans with 1 tsp olive oil.", macros: { protein: "32g", carbs: "55g", fat: "18g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "69g", carbs: "195g", fat: "51g" }
+            },
+            // Day 5
+            {
+                day: "Day 5",
+                meals: [
+                    { type: "Breakfast", name: "Chia Seed Pudding with Berries", details: "3 tbsp chia seeds, 1 cup unsweetened almond milk, 1/2 tsp vanilla extract, 1/4 cup mixed berries. Let set overnight.", macros: { protein: "10g", carbs: "40g", fat: "18g", calories: "300" } },
+                    { type: "Snack 1", name: "Pear", details: "1 small pear.", macros: { protein: "0g", carbs: "25g", fat: "0g", calories: "100" } },
+                    { type: "Lunch", name: "Gluten-Free Chicken & Veggie Pasta Salad", details: "1 cup cooked gluten-free pasta (chickpea or lentil-based), 3 oz diced cooked chicken breast, 1/2 cup chopped bell peppers, cucumber, and cherry tomatoes, 1 tbsp light vinaigrette.", macros: { protein: "30g", carbs: "40g", fat: "15g", calories: "400" } },
+                    { type: "Snack 2", name: "Pumpkin Seeds", details: "1/4 cup pumpkin seeds.", macros: { protein: "7g", carbs: "5g", fat: "10g", calories: "150" } },
+                    { type: "Dinner", name: "Marinated Grilled Chicken Breast with Mashed Cauliflower", details: "4 oz marinated grilled chicken breast (marinate in lemon juice, herbs, and garlic), 1 cup mashed cauliflower (made with a splash of unsweetened almond milk) and 1 cup steamed Brussels sprouts.", macros: { protein: "40g", carbs: "40g", fat: "10g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "87g", carbs: "150g", fat: "53g" }
+            },
+            // Day 6
+            {
+                day: "Day 6",
+                meals: [
+                    { type: "Breakfast", name: "Avocado Toast", details: "1 slice gluten-free toast with 1/4 avocado and everything bagel seasoning.", macros: { protein: "5g", carbs: "30g", fat: "15g", calories: "300" } },
+                    { type: "Snack 1", name: "Carrots & Hummus", details: "1/2 cup baby carrots with 2 tbsp hummus.", macros: { protein: "3g", carbs: "15g", fat: "3g", calories: "100" } },
+                    { type: "Lunch", name: "Leftover Chicken Breast and Avocado Wrap", details: "3 oz sliced grilled chicken breast, 1/4 avocado, lettuce, tomato in 1 gluten-free wrap.", macros: { protein: "28g", carbs: "30g", fat: "18g", calories: "400" } },
+                    { type: "Snack 2", name: "Greek Yogurt with Honey & Berries", details: "1 cup plain low-fat Greek yogurt with 1 tsp honey or maple syrup and 1/4 cup berries.", macros: { protein: "18g", carbs: "25g", fat: "1g", calories: "150" } },
+                    { type: "Dinner", name: "Baked Chicken Drumstick with Asparagus & Quinoa", details: "Baked chicken drumstick (skin removed, 2 small) with 1 cup roasted asparagus and 1/2 cup quinoa.", macros: { protein: "30g", carbs: "50g", fat: "18g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "84g", carbs: "150g", fat: "55g" }
+            },
+            // Day 7
+            {
+                day: "Day 7",
+                meals: [
+                    { type: "Breakfast", name: "Gluten-free Pancake with Berries & Maple Syrup", details: "1 medium gluten-free pancake made with gluten-free flour, 1/4 cup berries, and 1 tbsp pure maple syrup.", macros: { protein: "8g", carbs: "60g", fat: "8g", calories: "300" } },
+                    { type: "Snack 1", name: "Banana", details: "1 medium banana.", macros: { protein: "1g", carbs: "27g", fat: "0g", calories: "100" } },
+                    { type: "Lunch", name: "Chickpea Salad Sandwich", details: "1/2 cup mashed chickpeas with 1 tbsp light mayo, chopped celery, and onion, served on 1 slice gluten-free bread with lettuce and tomato.", macros: { protein: "15g", carbs: "40g", fat: "15g", calories: "400" } },
+                    { type: "Snack 2", name: "Cantaloupe & Walnuts", details: "1 cup cantaloupe with 1/4 cup walnuts.", macros: { protein: "5g", carbs: "20g", fat: "12g", calories: "150" } },
+                    { type: "Dinner", name: "Baked White Fish with Brown Rice & Mixed Vegetables", details: "4 oz baked white fish (e.g., haddock), 1 cup brown rice and 1 cup steamed mixed vegetables (peas, corn, green beans).", macros: { protein: "30g", carbs: "60g", fat: "10g", calories: "550" } }
+                ],
+                dailySummary: { calories: "1500", protein: "59g", carbs: "207g", fat: "45g" }
+            }
+        ];
+
+        let currentDayIndex = 0;
+        const mealPlanContent = document.getElementById('meal-plan-content');
+        const dayNavigation = document.getElementById('day-navigation');
+
+        function renderMealPlan(dayIndex) {
+            const dayData = mealPlanData[dayIndex];
+            if (!dayData) return;
+
+            let html = `
+                <h2 class="text-yellow-700 text-center mb-6">${dayData.day}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            `;
+
+            dayData.meals.forEach(meal => {
+                html += `
+                    <div class="meal-card">
+                        <h3 class="text-yellow-600">${meal.type}: ${meal.name}</h3>
+                        <p class="text-gray-600 text-sm mb-2">${meal.details}</p>
+                        <p class="text-gray-700 text-sm">
+                            <span class="macro-label">Calories:</span> ${meal.macros.calories} |
+                            <span class="macro-label">Protein:</span> ${meal.macros.protein} |
+                            <span class="macro-label">Carbs:</span> ${meal.macros.carbs} |
+                            <span class="macro-label">Fat:</span> ${meal.macros.fat}
+                        </p>
+                    </div>
+                `;
+            });
+
+            html += `</div>
+                <div class="summary-card">
+                    <h3 class="text-yellow-700">Daily Summary for ${dayData.day}</h3>
+                    <p class="text-gray-700">
+                        <span class="macro-label">Total Calories:</span> ${dayData.dailySummary.calories} |
+                        <span class="macro-label">Total Protein:</span> ${dayData.dailySummary.protein} |
+                        <span class="macro-label">Total Carbs:</span> ${dayData.dailySummary.carbs} |
+                        <span class="macro-label">Total Fat:</span> ${dayData.dailySummary.fat}
+                    </p>
+                </div>
+            `;
+            mealPlanContent.innerHTML = html;
+            updateDayButtons(dayIndex);
+        }
+
+        function updateDayButtons(activeDayIndex) {
+            dayNavigation.innerHTML = ''; // Clear existing buttons
+            mealPlanData.forEach((day, index) => {
+                const button = document.createElement('button');
+                button.textContent = day.day;
+                button.classList.add('day-button');
+                if (index === activeDayIndex) {
+                    button.classList.add('active');
+                }
+                button.onclick = () => {
+                    currentDayIndex = index;
+                    renderMealPlan(currentDayIndex);
+                };
+                dayNavigation.appendChild(button);
+            });
+        }
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMealPlan(currentDayIndex);
+        });
+    </script>
+</body>
+</html>
