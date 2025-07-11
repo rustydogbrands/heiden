@@ -10,44 +10,44 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            color: #374151; /* Dark gray text */
+            background-color: #F9F6F2; /* Soft cream background */
+            color: #222; /* Dark text */
         }
         .container {
             max-width: 1000px;
             margin: 2rem auto;
             padding: 1.5rem;
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         .day-button {
             @apply px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200;
-            @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+            @apply bg-[#F5E9DA] text-[#222] hover:bg-[#EADBC8];
         }
         .day-button.active {
-            @apply bg-blue-600 text-white hover:bg-blue-700;
+            @apply bg-[#EADBC8] text-[#222] border border-[#C2B09E];
         }
         .meal-card {
-            @apply bg-blue-50 p-4 rounded-lg shadow-sm mb-4;
+            @apply bg-[#F5E9DA] p-4 rounded-lg shadow-sm mb-4 border border-[#EADBC8];
         }
         .summary-card {
-            @apply bg-green-50 p-4 rounded-lg shadow-sm mt-6;
+            @apply bg-[#F5E9DA] p-4 rounded-lg shadow-sm mt-6 border border-[#EADBC8];
         }
         h2 {
-            @apply text-2xl font-semibold text-gray-800 mb-4;
+            @apply text-2xl font-semibold text-[#2D2D2D] mb-4;
         }
         h3 {
-            @apply text-xl font-medium text-gray-700 mb-2;
+            @apply text-xl font-medium text-[#2D2D2D] mb-2;
         }
         h4 {
-            @apply text-lg font-medium text-gray-600 mb-1;
+            @apply text-lg font-medium text-[#5C4A36] mb-1;
         }
         .macro-label {
-            @apply font-semibold text-gray-600;
+            @apply font-semibold text-[#5C4A36];
         }
         .section-title {
-            @apply text-2xl font-semibold text-gray-800 mt-8 mb-4;
+            @apply text-2xl font-semibold text-[#2D2D2D] mt-8 mb-4;
         }
     </style>
 </head>
@@ -56,14 +56,17 @@
         <div class="flex justify-center mb-4">
             <img src="Solas Logo.png" alt="Solas Nutrition Logo" class="h-40 w-auto" />
         </div>
-        <h1 class="text-3xl md:text-4xl font-bold text-center text-yellow-800 mb-2">Deanna's 7-Day Gluten-Free Meal Plan</h1>
-        <p class="text-center text-yellow-700 text-lg font-semibold mb-4">Welcome, Deanna! Here’s your personalized meal plan, designed just for you.</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-[#2D2D2D] mb-2">Deanna's 7-Day Gluten-Free Meal Plan</h1>
+        <p class="text-center text-[#5C4A36] text-lg font-semibold mb-4">Welcome, Deanna! Here’s your personalized meal plan, designed just for you.</p>
         <p class="text-center text-gray-600 mb-8">
             This meal plan is a general guide (1,500 calories/day with 30% protein, 45% carbs, 25% fats).
             It focuses on clean eating, easy-to-cook meals, and foods to help lower LDL cholesterol, with no red meat and minimal low-fat dairy.
             <br>
             
 
+        <div class="flex justify-center mb-6">
+            <a href="Heiden Meal Plan.pdf" download class="px-6 py-2 rounded-lg font-semibold text-[#fff] bg-[#5C4A36] hover:bg-[#8B6F47] transition-colors duration-200 shadow-md">Download PDF</a>
+        </div>
         <!-- Day Navigation -->
         <div class="flex flex-wrap justify-center gap-2 mb-8" id="day-navigation">
             <!-- Buttons will be generated here by JavaScript -->
@@ -216,14 +219,14 @@
             if (!dayData) return;
 
             let html = `
-                <h2 class="text-yellow-700 text-center mb-6">${dayData.day}</h2>
+                <h2 class="text-[#2D2D2D] text-center mb-6">${dayData.day}</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             `;
 
             dayData.meals.forEach(meal => {
                 html += `
                     <div class="meal-card">
-                        <h3 class="text-yellow-600">${meal.type}: ${meal.name}</h3>
+                        <h3 class="text-[#2D2D2D]">${meal.type}: ${meal.name}</h3>
                         <p class="text-gray-600 text-sm mb-2">${meal.details}</p>
                         <p class="text-gray-700 text-sm">
                             <span class="macro-label">Calories:</span> ${meal.macros.calories} |
@@ -237,7 +240,7 @@
 
             html += `</div>
                 <div class="summary-card">
-                    <h3 class="text-yellow-700">Daily Summary for ${dayData.day}</h3>
+                    <h3 class="text-[#5C4A36]">Daily Summary for ${dayData.day}</h3>
                     <p class="text-gray-700">
                         <span class="macro-label">Total Calories:</span> ${dayData.dailySummary.calories} |
                         <span class="macro-label">Total Protein:</span> ${dayData.dailySummary.protein} |
